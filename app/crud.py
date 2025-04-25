@@ -32,8 +32,10 @@ def update_city(db: Session, city_id: int, city: CityCreate):
 
 def delete_city(db: Session, city_id: int):
     db_city = db.query(City).filter(City.id == city_id).delete()
-    if db_city:
-        db.commit()
+    if db_city is None:
+        return None
+    db.delete(db_city)
+    db.commit()
     return db_city
 
 
