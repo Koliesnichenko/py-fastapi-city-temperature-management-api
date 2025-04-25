@@ -23,3 +23,4 @@ class Temperature(Base):
     city_id = Column(Integer, ForeignKey("city.id"))
     date_time = Column(DateTime)
     temperature = Column(Float)
+    city = relationship("City", back_populates="temperature")

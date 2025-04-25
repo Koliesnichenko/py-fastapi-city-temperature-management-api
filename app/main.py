@@ -77,4 +77,4 @@ def get_temperatures(skip: int = 0, limit: int = 10, db: Session = Depends(get_d
 
 @app.get("/temperatures/{city_id}", response_model=List[schemas.Temperature])
 def get_temperature(city_id: int, db: Session = Depends(get_db)):
-    db_city = crud.get_city(db=db, city_id=city_id)
+    return crud.get_temperature_by_city(db=db, city_id=city_id)
